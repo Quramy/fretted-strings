@@ -1,8 +1,8 @@
-import { mark, FretsMarker, Frets } from ".";
+import { mark, FretsMarker, Frets } from '.';
 
 describe(mark, () => {
   it('should mark frets to string content', () => {
-    const frets: Frets ={};
+    const frets: Frets = {};
     // prettier-ignore
     const content = '0123456789    \n'
                   + '0123456789    \n'
@@ -19,7 +19,7 @@ describe(mark, () => {
 
 describe(FretsMarker, () => {
   it('should mark frets to string content', () => {
-    const frets: Frets ={};
+    const frets: Frets = {};
     // prettier-ignore
     const content = '0123456789    \n'
                   + '0123456789    \n'
@@ -34,7 +34,7 @@ describe(FretsMarker, () => {
   });
 
   it('should mark frets to string content with custom tags', () => {
-    const frets: Frets ={};
+    const frets: Frets = {};
     // prettier-ignore
     const content = '0123456789    \n'
                   + '0123456789    \n'

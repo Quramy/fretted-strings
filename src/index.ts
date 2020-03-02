@@ -32,8 +32,8 @@ let defaultOpts = {
 };
 
 export class FretsMarker {
-  private _opt: { tagStart: string, tagEnd: string };
-  constructor(options: FretsMarkerOptions = { }) {
+  private _opt: { tagStart: string; tagEnd: string };
+  constructor(options: FretsMarkerOptions = {}) {
     this._opt = {
       tagStart: DEFAULT_TAG_START,
       tagEnd: DEFAULT_TAG_END,
@@ -59,10 +59,11 @@ export class FretsMarker {
       if (!trimmedNameLine.startsWith(this._opt.tagStart) || !trimmedNameLine.endsWith(this._opt.tagEnd)) {
         continue;
       }
-      const names = trimmedNameLine.slice(this._opt.tagStart.length, trimmedNameLine.length - this._opt.tagEnd.length)
-      .replace('\\', ' ')
-      .trim()
-      .split(/\s+/);
+      const names = trimmedNameLine
+        .slice(this._opt.tagStart.length, trimmedNameLine.length - this._opt.tagEnd.length)
+        .replace('\\', ' ')
+        .trim()
+        .split(/\s+/);
       for (let j = 0; j < Math.min(cols.length, names.length); ++j) {
         markInfos.push({
           line: actualLines.length - 1,

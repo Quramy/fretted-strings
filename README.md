@@ -1,4 +1,5 @@
 # fretted-strings
+
 Marks on your strings and get it's position.
 
 ```sh
@@ -11,16 +12,22 @@ npm i fretted-strings
 import { mark, Frets } from 'fretted-strings';
 
 const frets: Frets = {};
-const content = mark(`
+const content = mark(
+  `
       hogehoge
   %%% ^      ^   %%%
   %%% p1     p2  %%%
-      fooo`, frets);
+      fooo`,
+  frets,
+);
 
 // Function `mark` returns a string which is removed lines enclosed by '%%%' tags from the parameter.
-assert(content, `
+assert(
+  content,
+  `
       hogehoge
-      fooo`);
+      fooo`,
+);
 
 // And this function assigns specified location whose name is represented
 // as identifier under the `^` character to 2nd parameter.
@@ -43,14 +50,17 @@ setOptions({
 
 const frets: Frets = {};
 
-mark(`<html>
+mark(
+  `<html>
   <div>hogehoge</div>
   <!--%%   ^    %%-->
   <!--%%   p    %%-->
-</html>`, frets);
+</html>`,
+  frets,
+);
 ```
 
-Or 
+Or
 
 ```ts
 import { FretsMarker, Frets } from 'fretted-strings';
@@ -62,12 +72,16 @@ const marker = new FretsMarker({
 
 const frets: Frets = {};
 
-marker.mark(`<html>
+marker.mark(
+  `<html>
   <div>hogehoge</div>
   <!--%%   ^    %%-->
   <!--%%   p    %%-->
-</html>`, frets);
+</html>`,
+  frets,
+);
 ```
 
 ## LICENSE
+
 MIT
