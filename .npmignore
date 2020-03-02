@@ -1,0 +1,10 @@
+src/
+*.test.*
+tsconfig.json
+.eslintrc
+.eslintrc.yml
+.prettierignore
+.prettierrc.yml
+.github/
+__snapshots__/
+coverage/
