@@ -1,5 +1,8 @@
 # fretted-strings
 
+[![npm version](https://badge.fury.io/js/fretted-strings.svg)](https://badge.fury.io/js/fretted-strings)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/Quramy/fretted-strings/master/LICENSE.txt)
+
 Marks on your strings and get it's position.
 
 ```sh
