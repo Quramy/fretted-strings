@@ -1,6 +1,6 @@
 {
   "name": "fretted-strings",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0-alpha.1",
   "description": "Mark on your strings and get it's position",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
