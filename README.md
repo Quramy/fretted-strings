@@ -54,11 +54,13 @@ setOptions({
 const frets: Frets = {};
 
 mark(
-  `<html>
-  <div>hogehoge</div>
-  <!--%%   ^    %%-->
-  <!--%%   p    %%-->
-</html>`,
+  `
+    <html>
+      <div>hogehoge</div>
+      <!--%%   ^    %%-->
+      <!--%%   p    %%-->
+    </html>
+  `,
   frets,
 );
 ```
@@ -76,11 +78,13 @@ const marker = new FretsMarker({
 const frets: Frets = {};
 
 marker.mark(
-  `<html>
-  <div>hogehoge</div>
-  <!--%%   ^    %%-->
-  <!--%%   p    %%-->
-</html>`,
+  `
+    <html>
+      <div>hogehoge</div>
+      <!--%%   ^    %%-->
+      <!--%%   p    %%-->
+    </html>
+  `,
   frets,
 );
 ```
