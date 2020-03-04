@@ -8,3 +8,4 @@ tsconfig.json
 .github/
 __snapshots__/
 coverage/
+example.js

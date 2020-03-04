@@ -12,9 +12,10 @@ npm i fretted-strings
 ## Basic usage
 
 ```ts
-import { mark, Frets } from 'fretted-strings';
+const assert = require('assert');
+const { mark } = require('fretted-strings');
 
-const frets: Frets = {};
+const frets = {};
 const content = mark(
   `
       hogehoge
@@ -25,7 +26,7 @@ const content = mark(
 );
 
 // Function `mark` returns a string which is removed lines enclosed by '%%%' tags from the parameter.
-assert(
+assert.equal(
   content,
   `
       hogehoge
@@ -34,24 +35,26 @@ assert(
 
 // And this function assigns specified location whose name is represented
 // as identifier under the `^` character to 2nd parameter.
-assert(frets.p1.line, 1);
-assert(frets.p1.col, 6);
+assert.equal(frets.p1.pos, 7);
+assert.equal(frets.p1.line, 1);
+assert.equal(frets.p1.character, 6);
 
-assert(frets.p2.line, 1);
-assert(frets.p2.col, 13);
+assert.equal(frets.p2.pos, 14);
+assert.equal(frets.p2.line, 1);
+assert.equal(frets.p2.character, 13);
 ```
 
 ## Use custom tag
 
 ```ts
-import { setOptions, mark, Frets } from 'fretted-strings';
+const { mark } = require('fretted-strings');
 
 setOptions({
   tagStart: '<!--%%',
   tagEnd: '%%-->',
 });
 
-const frets: Frets = {};
+const frets = {};
 
 mark(
   `
@@ -68,14 +71,14 @@ mark(
 Or
 
 ```ts
-import { FretsMarker, Frets } from 'fretted-strings';
+const { mark } = require('fretted-strings');
 
 const marker = new FretsMarker({
   tagStart: '<!--%%',
   tagEnd: '%%-->',
 });
 
-const frets: Frets = {};
+const frets = {};
 
 marker.mark(
   `
