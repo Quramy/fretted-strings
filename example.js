@@ -1,6 +1,7 @@
-const assert = require('assert');
-// const { mark } = require('fretted-strings');
-const { mark } = require('./lib');
+import assert from 'node:assert';
+
+// import { mark } from 'fretted-strings';
+import { mark } from './dist/index.js';
 
 const frets = {};
 const content = mark(

@@ -12,8 +12,8 @@ npm i fretted-strings
 ## Basic usage
 
 ```ts
-const assert = require('assert');
-const { mark } = require('fretted-strings');
+import assert from 'node:assert';
+import { mark } from 'fretted-strings';
 
 const frets = {};
 const content = mark(
@@ -47,7 +47,7 @@ assert.equal(frets.p2.character, 13);
 ## Use custom tag
 
 ```ts
-const { mark } = require('fretted-strings');
+import { mark } from 'fretted-strings';
 
 setOptions({
   tagStart: '<!--%%',
@@ -71,7 +71,7 @@ mark(
 Or
 
 ```ts
-const { mark } = require('fretted-strings');
+import { mark } from 'fretted-strings';
 
 const marker = new FretsMarker({
   tagStart: '<!--%%',

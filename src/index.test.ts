@@ -40,7 +40,7 @@ describe(FretsMarker, () => {
                   + '0123456789    \n'
                   + '/* %% ^  %% */\n'
                   + '/* %% a  %% */\n'
-    const result = new FretsMarker({
+    new FretsMarker({
       tagStart: '/* %%',
       tagEnd: '%% */',
     }).mark(content, frets);
