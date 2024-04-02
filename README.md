@@ -13,19 +13,17 @@ npm i fretted-strings
 
 ```ts
 import assert from 'node:assert';
-import { mark } from 'fretted-strings';
+import { extract } from 'fretted-strings';
 
-const frets = {};
-const content = mark(
+const [content, frets] = extract(
   `
       hogehoge
   %%% ^      ^   %%%
   %%% p1     p2  %%%
       fooo`,
-  frets,
 );
 
-// Function `mark` returns a string which is removed lines enclosed by '%%%' tags from the parameter.
+// The 1st value of the tuple is a string which is removed lines enclosed by '%%%' tags from the parameter.
 assert.equal(
   content,
   `
@@ -33,8 +31,8 @@ assert.equal(
       fooo`,
 );
 
-// And this function assigns specified location whose name is represented
-// as identifier under the `^` character to 2nd parameter.
+// The 2nd value of the tuple is an object whose value represents location corresponding to "^" character.
+// And names under "^" character are available to use as keys of the object.
 assert.equal(frets.p1.pos, 7);
 assert.equal(frets.p1.line, 1);
 assert.equal(frets.p1.character, 6);
@@ -47,16 +45,11 @@ assert.equal(frets.p2.character, 13);
 ## Use custom tag
 
 ```ts
-import { mark } from 'fretted-strings';
+import { createExtractFn } from 'fretted-strings';
 
-setOptions({
-  tagStart: '<!--%%',
-  tagEnd: '%%-->',
-});
+const extract = createExtractFn('<!--%%', '%%-->');
 
-const frets = {};
-
-mark(
+const [content, frets] = extract(
   `
     <html>
       <div>hogehoge</div>
@@ -64,31 +57,6 @@ mark(
       <!--%%   p    %%-->
     </html>
   `,
-  frets,
-);
-```
-
-Or
-
-```ts
-import { mark } from 'fretted-strings';
-
-const marker = new FretsMarker({
-  tagStart: '<!--%%',
-  tagEnd: '%%-->',
-});
-
-const frets = {};
-
-marker.mark(
-  `
-    <html>
-      <div>hogehoge</div>
-      <!--%%   ^    %%-->
-      <!--%%   p    %%-->
-    </html>
-  `,
-  frets,
 );
 ```
 
