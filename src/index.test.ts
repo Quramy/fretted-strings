@@ -1,49 +1,30 @@
-import { mark, FretsMarker, Frets } from '.';
+import { extract, createExtractFn } from '.';
 
-describe(mark, () => {
+describe(extract, () => {
   it('should mark frets to string content', () => {
-    const frets: Frets = {};
-    // prettier-ignore
-    const content = '0123456789    \n'
-                  + '0123456789    \n'
-                  + '%%%^   ^   %%%\n'
-                  + '%%%a   b   %%%';
-    const result = mark(content, frets);
-    expect(result).toBe('0123456789    \n0123456789    ');
+    const [result, frets] = extract(
+      `0123456789
+0123456789
+%%% ^  ^   %%%
+%%% a  b   %%%`,
+    );
+    expect(result).toBe('0123456789\n0123456789');
     expect(frets.a.line).toBe(1);
-    expect(frets.a.character).toBe(3);
+    expect(frets.a.character).toBe(4);
     expect(frets.b.line).toBe(1);
     expect(frets.b.character).toBe(7);
   });
 });
 
-describe(FretsMarker, () => {
-  it('should mark frets to string content', () => {
-    const frets: Frets = {};
-    // prettier-ignore
-    const content = '0123456789    \n'
-                  + '0123456789    \n'
-                  + '%%%^   ^   %%%\n'
-                  + '%%%a   b   %%%';
-    const result = new FretsMarker().mark(content, frets);
-    expect(result).toBe('0123456789    \n0123456789    ');
-    expect(frets.a.line).toBe(1);
-    expect(frets.a.character).toBe(3);
-    expect(frets.b.line).toBe(1);
-    expect(frets.b.character).toBe(7);
-  });
-
+describe(createExtractFn, () => {
   it('should mark frets to string content with custom tags', () => {
-    const frets: Frets = {};
+    const extract = createExtractFn('/* %%', '%% */');
     // prettier-ignore
     const content = '0123456789    \n'
                   + '0123456789    \n'
                   + '/* %% ^  %% */\n'
                   + '/* %% a  %% */\n'
-    new FretsMarker({
-      tagStart: '/* %%',
-      tagEnd: '%% */',
-    }).mark(content, frets);
+    const [, frets] = extract(content);
     expect(frets.a.line).toBe(1);
     expect(frets.a.character).toBe(6);
   });
