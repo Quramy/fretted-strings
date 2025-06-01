@@ -47,7 +47,7 @@
     "pretty-quick": "4.1.1",
     "rimraf": "6.0.1",
     "ts-jest": "29.3.4",
-    "tsup": "8.4.0",
+    "tsup": "8.5.0",
     "typescript": "5.8.3"
   }
 }
